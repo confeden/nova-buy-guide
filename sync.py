@@ -10,7 +10,7 @@ soup = BeautifulSoup(response.text, 'html.parser')
 
 # Вытаскиваем заголовок и само тело статьи
 title_tag = soup.find('h1')
-title = title_tag.text if title_tag else 'Способы приобретения Nova'
+title = title_tag.text if title_tag else 'Способы приобретения Кода'
 article = soup.find('article')
 
 # Обновленный дизайн, копирующий стили Telegraph
