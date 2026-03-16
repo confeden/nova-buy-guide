@@ -8,12 +8,16 @@ url = 'https://telegra.ph/sposoby-priobreteniya-koda-03-09'
 response = requests.get(url)
 soup = BeautifulSoup(response.text, 'html.parser')
 
-# Вытаскиваем заголовок и само тело статьи
-title_tag = soup.find('h1')
-title = title_tag.text if title_tag else 'Способы приобретения Кода'
+# Мы больше не вытаскиваем заголовок из Телеграфа, а задаем свой правильный.
+# title_tag = soup.find('h1')
+# title = title_tag.text if title_tag else 'Способы приобретения кода' # <-- вот так было бы
+
+# Мы задаем свой заголовок сайта в HTML, чтобы не зависеть от Телеграфа.
+title = 'Способы приобретения кода' # <-- ВОТ ПРАВИЛЬНЫЙ ЗАГОЛОВОК
+
 article = soup.find('article')
 
-# Обновленный дизайн, копирующий стили Telegraph
+# Обновленный дизайн, копирующий стили Telegraph, с иконкой и исправленным заголовком
 html_content = f"""
 <!DOCTYPE html>
 <html lang="ru">
@@ -24,6 +28,9 @@ html_content = f"""
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="icon.ico">
+
     <style>
         body {{
             font-family: 'PT Serif', Georgia, serif;
